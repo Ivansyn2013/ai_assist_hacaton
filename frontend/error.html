@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ошибка — Медицинский чат</title>
+  <!-- Подключаем твой основной CSS -->
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    /* Дополнительные стили только для страницы ошибки */
+    .error-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .error-code {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #e74c3c;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-message {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: white;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .back-btn {
+      padding: 12px 30px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Медицинский чат</h1>
+      <p>Ваш виртуальный помощник в здравоохранении</p>
+    </header>
+
+    <div class="error-container">
+      <div class="error-code">500</div>
+      <div class="error-message">
+        К сожалению, произошла ошибка на сервере.<br>
+        Попробуйте обновить страницу или вернуться позже.
+      </div>
+      <button class="back-btn" onclick="window.history.back()">← Назад</button>
+    </div>
+
+    <!-- Пустой блок для второго столбца (medical-panel), чтобы сохранить сетку -->
+    <div class="medical-panel" style="visibility: hidden; height: 0; padding: 0; box-shadow: none;"></div>
+  </div>
+</body>
+</html>

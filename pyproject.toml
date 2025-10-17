@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ai-assist-hacaton"
+version = "0.1.0"
+description = ""
+authors = ["ivan_note <ivansyn2013@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "ai_assist_hacaton"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+dotenv-python = "^0.0.1"
+tqdl = "^0.0.4"
+openai = "^2.4.0"
+fastapi = "^0.119.0"
+loguru = "^0.7.3"
+uvicorn = "^0.37.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

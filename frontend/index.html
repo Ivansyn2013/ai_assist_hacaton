@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+    <title>Симулярия - AI Пациент для обучения врачей</title>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🩺 Симулярия</h1>
+            <p>AI-пациент для обучения врачей</p>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="patient-info">
+                    <strong>Пациент:</strong> Алексей, 25 лет
+                    <span class="status">⏳ Ожидает диагноза</span>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Сообщения будут добавляться динамически -->
+            </div>
+
+            <div class="quick-actions" id="quickActions">
+                <button onclick="sendQuickMessage('Расскажите подробнее о боли. Где именно болит?')">
+                    Спросить о боли
+                </button>
+                <button onclick="sendQuickMessage('Была ли тошнота или рвота?')">
+                    Уточнить симптомы
+                </button>
+                <button onclick="sendQuickMessage('Измеряли температуру?')">
+                    Проверить температуру
+                </button>
+                <button onclick="sendQuickMessage('Проверить симптом Щеткина-Блюмберга')">
+                    Симптом Щеткина
+                </button>
+            </div>
+
+<!--Spinner-->
+            <div class="spinner" id="spinner" style="display: none; text-align: center; padding: 10px;">
+              <div style="border: 4px solid #f3f3f3; border-top: 4px solid #007bff; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite;"></div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="messageInput" placeholder="Введите ваш вопрос..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">Отправить</button>
+            </div>
+        </div>
+
+        <div class="medical-panel">
+            <h3>Медицинская карта</h3>
+            <div class="vitals">
+                <div>Температура: <span id="temp">-</span></div>
+                <div>АД: <span id="pressure">-</span></div>
+                <div>Пульс: <span id="pulse">-</span></div>
+                <div>Локализация боли: <span id="painLocation">-</span></div>
+            </div>
+            <button onclick="showFeedback()" class="diagnosis-btn">Поставить диагноз</button>
+        </div>
+    </div>
+
+    <div class="feedback-modal" id="feedbackModal">
+        <div class="feedback-content">
+            <h2>Результаты диагностики</h2>
+
+            <div class="feedback-section">
+                <h3>✅ Ваш диагноз: ОСТРЫЙ АППЕНДИЦИТ</h3>
+                <p>Диагноз подтвержден на основе клинической картины и данных обследования.</p>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Правильно выполненные действия:</h3>
+                <ul>
+                    <li>Выявили миграцию боли (сначала по всему животу → затем в правой подвздошной области)</li>
+                    <li>Определили симптомы интоксикации (температура, тошнота, рвота)</li>
+                    <li>Проверили перитонеальные симптомы (Щеткина-Блюмберга)</li>
+                    <li>Назначили необходимые исследования (ОАК, УЗИ)</li>
+                    <li>Поставили правильный диагноз</li>
+                </ul>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Что можно улучшить:</h3>
+                <ul>
+                    <li>Стоило уточнить наличие/отсутствие симптома Ровзинга</li>
+                    <li>Можно было спросить про аппетит и стул</li>
+                    <li>Рекомендуется уточнить наличие/отсутствие dysuria</li>
+                </ul>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Дифференциальный диагноз:</h3>
+                <ul>
+                    <li>Острый мезаденит</li>
+                    <li>Острый холецистит</li>
+                    <li>Почечная колика</li>
+                    <li>Внематочная беременность (у женщин)</li>
+                </ul>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Рекомендации:</h3>
+                <p>Срочная госпитализация в хирургический стационар, аппендэктомия.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeFeedback()">Закрыть</button>
+        </div>
+    </div>
+
+</body>
+</html>
