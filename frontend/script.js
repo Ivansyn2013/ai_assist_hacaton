@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // Fetch to backend
 async function sendMessage() {
-    const BACK_URL = ''
+    const BACK_URL = 'https://d5delh0puopi0il5qice.k1mxzkh0.apigw.yandexcloud.net'
     const input = document.getElementById('messageInput');
     const message = input.value.trim();
 

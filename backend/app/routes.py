@@ -1,12 +1,18 @@
 from starlette.middleware.cors import CORSMiddleware
+from .schema import AiRequest,AiResponse
+from .config import app
 
-from config import app
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-)
 
-@app.get("/send_to_ai/*")
-async def root():
-    pass
+@app.post("/ai_request", response_model=AiResponse)
+async def ai_request(request: AiRequest):
+    # Пока — заглушка для острого аппендицита
+    return AiResponse(
+        response="Бэек ответ",
+        medicalData={
+            "temperature": "37.8°C",
+            "pressure": "130/85",
+            "pulse": "95 уд/мин",
+            "painLocation": "!!! Правая подвздошная область"
+        }
+    )

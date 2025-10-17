@@ -1,4 +1,4 @@
-
+from .config import app
 
 def web():
     pass
