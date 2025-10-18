@@ -1,10 +1,11 @@
 from starlette.middleware.cors import CORSMiddleware
 from .schema import AiRequest,AiResponse
 from .config import app
+from fastapi import APIRouter
 
+router = APIRouter()
 
-
-@app.post("/ai_request", response_model=AiResponse)
+@router.post("/ai_request", response_model=AiResponse)
 async def ai_request(request: AiRequest):
     # Пока — заглушка для острого аппендицита
     return AiResponse(

@@ -1,4 +1,7 @@
 from .config import app
+from .routes import router
+
+app.include_router(router)
 
 def web():
     pass
@@ -6,10 +9,7 @@ def web():
 def ai_request():
     pass
 
-
-def main():
+if __name__ == "__main__":
     pass
 
 
-if __name__ == "__main__":
-    main()
