@@ -1,6 +1,14 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
+
+class MedicalData(BaseModel):
+    temperature: Optional[float] = None
+    pressure: Optional[float] = None
+    heart_rate: Optional[float] = None
+    sex: Optional[str] = None
+    pain: Optional[str] = None
+    age: Optional[int] = None
 
 class AiRequest(BaseModel):
     temperature: float = None
@@ -12,14 +20,8 @@ class AiRequest(BaseModel):
 # Модель ответа
 class AiResponse(BaseModel):
     response: str
+    medical_data: Optional[MedicalData] = dict
 
-class MedicalData(BaseModel):
-    temperature: float = None
-    pressure: float = None
-    heart_rate: float = None
-    sex: str = None
-    pain: str = None
-    age: int = None
 
 class SafeResponse:
     def __init__(self, data=None):

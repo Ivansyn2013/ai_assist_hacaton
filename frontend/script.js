@@ -23,8 +23,8 @@
 let medicalData = {
     temperature: '37.8°C',
     pressure: '130/85',
-    pulse: '95 уд/мин',
-    painLocation: 'Правая подвздошная область',
+    heart_rate: '95 уд/мин',
+    pain: 'Правая подвздошная область',
     symptoms: ['Боль в животе', 'Тошнота', 'Рвота', 'Лихорадка'],
     age: null,
     sex: null,
@@ -75,8 +75,8 @@ async function sendMessage() {
         addMessage(data.response, 'patient');
 
         // Опционально: обновляем медицинскую панель, если бэкенд прислал данные
-        if (data.medicalData) {
-            medicalData = data.medicalData;
+        if (data.medical_data) {
+            medicalData = data.medical_data;
             updateMedicalPanel();
         }
     } catch (error) {
@@ -134,7 +134,7 @@ function processPatientResponse(doctorMessage) {
     }
 
     if (lowerMessage.includes('где болит') || lowerMessage.includes('локализация')) {
-        medicalData.painLocation = 'Правая подвздошная область';
+        medicalData.pain = 'Правая подвздошная область';
     }
 
 
@@ -147,16 +147,16 @@ function updateMedicalPanel() {
     document.getElementById('pressure').textContent = medicalData.pressure;
     document.getElementById('pressure-block').style.display = 'flex'
 
-    document.getElementById('pulse').textContent = medicalData.pulse;
+    document.getElementById('heart_rate').textContent = medicalData.heart_rate;
     document.getElementById('heartrate-block').style.display = 'flex'
 
-    document.getElementById('painLocation').textContent = medicalData.painLocation;
+    document.getElementById('pain').textContent = medicalData.pain;
     document.getElementById('pain-block').style.display = 'flex'
 
-    document.getElementById('age').textContent = medicalData.painLocation;
+    document.getElementById('age').textContent = medicalData.age;
     document.getElementById('age-block').style.display = 'flex'
 
-    document.getElementById('sex').textContent = medicalData.painLocation;
+    document.getElementById('sex').textContent = medicalData.sex;
     document.getElementById('sex-block').style.display = 'flex'
 
 }

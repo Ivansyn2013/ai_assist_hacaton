@@ -411,6 +411,17 @@ files = [
 ]
 
 [[package]]
+name = "dotenv-python"
+version = "0.0.1"
+description = "Read .env(-ish) configuration file for python web applications."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "dotenv-python-0.0.1.zip", hash = "sha256:362e170ca8fd69a70c1aca1fda2ddad0ac270e161e81e59f4039ec11decc14fa"},
+]
+
+[[package]]
 name = "fastapi"
 version = "0.119.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
@@ -1407,4 +1418,4 @@ six = ">=1.17.0,<2"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a5e0b0645aa9921b47602a590d45d060082be07d2cd0cf1bef13c8426e9427b6"
+content-hash = "23f838819bd2d9e542f95a11c281dec3a06abedba0aaa6acc6edab74e2bd2d2e"

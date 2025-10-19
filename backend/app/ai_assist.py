@@ -2,10 +2,34 @@ import os
 import re
 
 import openai
-
+import json
 from .constants import INSTRUCTIONS
-from .schema import AiRequest, SafeResponse
+from .schema import AiRequest, SafeResponse, MedicalData
+import re
+from typing import Tuple, Optional
+from pydantic_core._pydantic_core import ValidationError
 
+def parse_ai_response(response: str) -> Tuple[str, Optional[dict]]:
+    """
+    Парсит ответ AI на текстовую часть и медицинские данные
+    """
+    # Пытаемся найти JSON в ответе
+    json_pattern = 'MEDICAL_JSON:'
+    part = response.output[0].content[0].text
+    answer_text, json_raw = part.split(json_pattern)
+    try:
+        json_prepare = json_raw[json_raw.find('{'): json_raw.find('}') + 1]
+        # json_data = json.loads(json_prepare)
+        medical_data = MedicalData.model_validate_json(json_prepare)
+        return answer_text, medical_data
+    except (json.JSONDecodeError, ValidationError):
+        print("Пересон json в объект не удался")
+        return response, None
+
+
+
+    # Если JSON не найден, возвращаем весь текст как ответ
+    return response, None
 
 def check_input(message):
     try:
@@ -59,5 +83,9 @@ def ai_assist(request: AiRequest):
 
 
 if __name__ == "__main__":
-    request = AiRequest(message='Как дела')
-    ai_assist(request)
+
+    request = AiRequest(message='Добрый день. Какой у вас возраст и '
+                                'температура')
+    responce = ai_assist(request)
+    answer, med_data = parse_ai_response(responce)
+    print(answer)
