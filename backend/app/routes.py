@@ -1,5 +1,5 @@
 from starlette.middleware.cors import CORSMiddleware
-from .schema import AiRequest,AiResponse
+from .schema import AiRequest, AiResponse, MedicalData
 from .config import app
 from fastapi import APIRouter
 from .ai_assist import *

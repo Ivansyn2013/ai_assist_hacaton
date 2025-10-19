@@ -50,6 +50,7 @@ header p {
     display: flex;
     flex-direction: column;
     height: 70vh;
+    min-height: 400px;
 }
 
 .chat-header {
@@ -76,6 +77,8 @@ header p {
     background: #f8f9fa;
     display: flex;
     flex-direction: column;
+    min-height: 0;
+
 }
 
 .message {
@@ -153,6 +156,7 @@ header p {
     gap: 10px;
     background: white;
     border-top: 1px solid #e1e5e9;
+    flex-shrink: 0;
 }
 
 .input-area input {
@@ -234,7 +238,7 @@ header p {
     background: #218838;
 }
 
-.feedback-modal {
+.feedback-modal, .reference-modal {
     display: none;
     position: fixed;
     top: 0;
@@ -303,6 +307,7 @@ header p {
 
     .chat-container {
         height: 60vh;
+        min-height: 300px;
     }
 
     header h1 {

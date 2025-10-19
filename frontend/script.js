@@ -25,7 +25,9 @@ let medicalData = {
     pressure: '130/85',
     pulse: '95 уд/мин',
     painLocation: 'Правая подвздошная область',
-    symptoms: ['Боль в животе', 'Тошнота', 'Рвота', 'Лихорадка']
+    symptoms: ['Боль в животе', 'Тошнота', 'Рвота', 'Лихорадка'],
+    age: null,
+    sex: null,
 };
 
 // Инициализация при загрузке
@@ -40,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Fetch to backend
 async function sendMessage() {
     const BACK_URL = 'https://d5delh0puopi0il5qice.k1mxzkh0.apigw.yandexcloud.net'
+    // const BACK_URL = 'localhost:8000'
     const input = document.getElementById('messageInput');
     const message = input.value.trim();
 
@@ -134,19 +137,44 @@ function processPatientResponse(doctorMessage) {
         medicalData.painLocation = 'Правая подвздошная область';
     }
 
-    // Имитация задержки ответа AI
-    setTimeout(() => {
-        addMessage(response, 'patient');
-        updateMedicalPanel();
-    }, 1000);
+
 }
 
 function updateMedicalPanel() {
     document.getElementById('temp').textContent = medicalData.temperature;
+    document.getElementById('temp-block').style.display = 'flex'
+
     document.getElementById('pressure').textContent = medicalData.pressure;
+    document.getElementById('pressure-block').style.display = 'flex'
+
     document.getElementById('pulse').textContent = medicalData.pulse;
+    document.getElementById('heartrate-block').style.display = 'flex'
+
     document.getElementById('painLocation').textContent = medicalData.painLocation;
+    document.getElementById('pain-block').style.display = 'flex'
+
+    document.getElementById('age').textContent = medicalData.painLocation;
+    document.getElementById('age-block').style.display = 'flex'
+
+    document.getElementById('sex').textContent = medicalData.painLocation;
+    document.getElementById('sex-block').style.display = 'flex'
+
 }
+
+function resetMedicalPanel() {
+    document.getElementById('temp-block').style.display = 'none'
+
+    document.getElementById('pressure-block').style.display = 'none'
+
+    document.getElementById('heartrate-block').style.display = 'none'
+
+    document.getElementById('pain-block').style.display = 'none'
+
+    document.getElementById('age-block').style.display = 'none'
+
+    document.getElementById('sex-block').style.display = 'none'
+}
+
 
 function showFeedback() {
     document.getElementById('feedbackModal').style.display = 'flex';
@@ -155,3 +183,12 @@ function showFeedback() {
 function closeFeedback() {
     document.getElementById('feedbackModal').style.display = 'none';
 }
+
+function showRef() {
+    document.getElementById('refModal').style.display = 'flex';
+}
+
+function closeRef() {
+    document.getElementById('refModal').style.display = 'none';
+}
+

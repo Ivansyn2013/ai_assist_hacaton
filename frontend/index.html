@@ -28,18 +28,7 @@
             </div>
 
             <div class="quick-actions" id="quickActions">
-                <button onclick="sendQuickMessage('Расскажите подробнее о боли. Где именно болит?')">
-                    Спросить о боли
-                </button>
-                <button onclick="sendQuickMessage('Была ли тошнота или рвота?')">
-                    Уточнить симптомы
-                </button>
-                <button onclick="sendQuickMessage('Измеряли температуру?')">
-                    Проверить температуру
-                </button>
-                <button onclick="sendQuickMessage('Проверить симптом Щеткина-Блюмберга')">
-                    Симптом Щеткина
-                </button>
+
             </div>
 
 <!--Spinner-->
@@ -56,12 +45,16 @@
         <div class="medical-panel">
             <h3>Медицинская карта</h3>
             <div class="vitals">
-                <div>Температура: <span id="temp">-</span></div>
-                <div>АД: <span id="pressure">-</span></div>
-                <div>Пульс: <span id="pulse">-</span></div>
-                <div>Локализация боли: <span id="painLocation">-</span></div>
+                <div id="temp-block" class="vitals-item">Температура: <span id="temp">-</span></div>
+                <div id="pressure-block" class="vitals-item">АД: <span id="pressure">-</span></div>
+                <div id="heartrate-block" class="vitals-item">Пульс: <span id="pulse">-</span></div>
+                <div id="pain-block" class="vitals-item">Локализация боли: <span id="painLocation">-</span></div>
+                <div id="age-block" class="vitals-item"> Возраст <span id="age">-</span></div>
+                <div id="sex-block" class="vitals-item"> Пол <span id="sex">-</span></div>
             </div>
-            <button onclick="showFeedback()" class="diagnosis-btn">Поставить диагноз</button>
+<!--            <button onclick="showFeedback()" class="diagnosis-btn">Поставить диагноз</button>-->
+            <button onclick="showRef()" class="diagnosis-btn">Справка</button>
+            <button onclick="resetMedicalPanel()" class="diagnosis-btn">Сбросить панель</button>
         </div>
     </div>
 
@@ -110,6 +103,39 @@
             </div>
 
             <button class="close-btn" onclick="closeFeedback()">Закрыть</button>
+        </div>
+    </div>
+    <div class="reference-modal" id="refModal">
+        <div class="feedback-content">
+            <h2>Как пользоваться ?</h2>
+
+            <div class="feedback-section">
+                <h3>✅ ИИ пациент </h3>
+                <p>Искуственный пациент имитирует поведение настоящего пациента. У него есть заболевание, симптомы,
+                  и другие параметры.  В конце теста осуществлятся оценка правильности Ваших действий.</p>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Ваши задачи</h3>
+                <ul>
+                    <li>Познакомится с пациентом</li>
+                    <li>Задавая вопросы, предположить диагноз</li>
+                    <li>Когда Вы будете получать необходимую информацию, медицинская карта юбудет заполняться
+                      автоматически</li>
+<!--                    <li>Время сессии ограничено 5 минутами</li>-->
+                    <li>Для окончания задания, напишите "Закончить занятие"</li>
+                    <li>Для установки диагноза, напишите "Ваш диагноз: ----"</li>
+
+                </ul>
+            </div>
+
+
+            <div class="feedback-section">
+                <h3>Рекомендации:</h3>
+                <p>Срочная госпитализация в хирургический стационар, аппендэктомия.</p>
+            </div>
+
+            <button class="close-btn" onclick="closeRef()">Закрыть</button>
         </div>
     </div>
 

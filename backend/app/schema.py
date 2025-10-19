@@ -13,6 +13,13 @@ class AiRequest(BaseModel):
 class AiResponse(BaseModel):
     response: str
 
+class MedicalData(BaseModel):
+    temperature: float = None
+    pressure: float = None
+    heart_rate: float = None
+    sex: str = None
+    pain: str = None
+    age: int = None
 
 class SafeResponse:
     def __init__(self, data=None):
